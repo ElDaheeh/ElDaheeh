@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مكتبة الدحيح - الرئيسية</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #2E7D32; /* Deep Green */
+      --secondary-color: #4CAF50; /* Lighter Green */
+      --accent-color: #FFC107; /* Amber for highlights */
+      --light-color: #f4f6f9; /* Light Grey Background */
+      --card-bg: #ffffff;
+      --text-color: #333333;
+      --text-light: #666666;
+      --border-color: #e0e0e0;
+      --border-radius: 8px;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s ease-in-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: var(--light-color);
+      color: var(--text-color);
+      direction: rtl;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: #fff;
+      padding: 25px 0;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    main {
+      padding-bottom: 40px; /* Space for footer */
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+      padding: 30px;
+      transition: var(--transition);
+      border: 1px solid var(--border-color);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-weight: 600;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--secondary-color);
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .sale-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      align-items: end;
+      gap: 20px;
+    }
+
+    label {
+      display: block; /* Changed from flex */
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-light);
+    }
+
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      transition: var(--transition);
+      background-color: #fff;
+    }
+
+    input[type="number"]:focus,
+    select:focus {
+      border-color: var(--primary-color);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+    }
+
+    .btn {
+      padding: 12px 25px;
+      background-color: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none; /* For links styled as buttons */
+      display: inline-block; /* For links styled as buttons */
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: #1e5b21; /* Darker shade */
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-secondary {
+        background-color: #fff;
+        color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+    }
+
+    .btn-secondary:hover {
+        background-color: #e8f5e9; /* Light green background on hover */
+        border-color: #1e5b21;
+        color: #1e5b21;
+    }
+
+    #totalDisplay {
+      font-weight: 700;
+      font-size: 1.3rem;
+      padding: 15px;
+      background: #e8f5e9; /* Light green background */
+      border: 1px solid #c8e6c9;
+      border-radius: var(--border-radius);
+      text-align: center;
+      color: var(--primary-color);
+      margin-top: 10px; /* Add some space */
+      grid-column: 1 / -1; /* Span across grid if needed */
+    }
+
+    .search-input {
+      width: 100%;
+      max-width: 350px;
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    .search-input:focus {
+        border-color: var(--primary-color);
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse; /* Changed from separate */
+      margin-top: 20px;
+      box-shadow: var(--shadow);
+      border-radius: var(--border-radius);
+      overflow: hidden; /* Ensures border-radius applies to table */
+      border: 1px solid var(--border-color);
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 1rem;
+    }
+
+    th {
+      background-color: var(--secondary-color);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    th .arrow {
+      margin-right: 8px; /* Adjusted margin for RTL */
+      font-size: 0.9em;
+      opacity: 0.7;
+    }
+
+    tbody tr {
+        background-color: var(--card-bg);
+        transition: background-color 0.2s ease;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f9fbf9; /* Slightly different shade for even rows */
+    }
+
+    tbody tr:hover {
+      background-color: #e8f5e9; /* Light green on hover */
+    }
+
+    td:first-child {
+      text-align: right; /* Align first column text to the right */
+      font-weight: 500;
+    }
+
+    #message {
+      padding: 10px 15px;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      margin-top: 15px;
+      text-align: center;
+      display: none; /* Hide initially */
+      grid-column: 1 / -1; /* Span across grid */
+    }
+
+    #message.success {
+        background-color: #d4edda; /* Green background for success */
+        color: #155724; /* Dark green text */
+        border: 1px solid #c3e6cb;
+        display: block;
+    }
+
+    #message.error {
+        background-color: #f8d7da; /* Red background for error */
+        color: #721c24; /* Dark red text */
+        border: 1px solid #f5c6cb;
+        display: block;
+    }
+
+    footer {
+        background-color: #e0e0e0;
+        color: var(--text-light);
+        text-align: center;
+        padding: 15px 0;
+        margin-top: 40px;
+        font-size: 0.9rem;
+        border-top: 1px solid #ccc;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      h2 { font-size: 1.5rem; }
+      .sale-section { grid-template-columns: 1fr; }
+      .section-header { flex-direction: column; align-items: stretch; }
+      .search-input { max-width: none; }
+      th, td { padding: 10px 8px; font-size: 0.9rem; }
+      .btn { padding: 10px 20px; font-size: 0.9rem; }
+      #totalDisplay { font-size: 1.1rem; padding: 12px; }
+    }
+
+    @media (max-width: 480px) {
+        .card { padding: 20px; }
+        th, td { white-space: nowrap; }
+        /* Consider making table horizontally scrollable on very small screens */
+        .table-container { overflow-x: auto; }
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>مكتبة الدحيح</h1>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>تنفيذ عملية بيع جديدة</h2>
+      <div class="sale-section">
+        <div>
+          <label for="saleProduct">المنتج:</label>
+          <select id="saleProduct"><option value="">اختر منتجًا</option></select>
+        </div>
+        <div>
+          <label for="saleQty">الكمية:</label>
+          <input id="saleQty" type="number" min="1" placeholder="أدخل الكمية" />
+        </div>
+        <div>
+          <label>&nbsp;</label> <!-- Spacer label for alignment -->
+          <button id="saleBtn" class="btn">تنفيذ البيع</button>
+        </div>
+      </div>
+      <div id="totalDisplay">الإجمالي: 0.00</div>
+      <div id="message"></div> <!-- Message area -->
+    </section>
+
+    <section class="card">
+      <div class="section-header">
+        <h2>قائمة المنتجات المتوفرة</h2>
+        <input id="searchBox" class="search-input" placeholder="ابحث بالاسم عن منتج..." />
+        <a href="reports_updated.html" class="btn btn-secondary">عرض تقارير المبيعات</a>
+      </div>
+      <div class="table-container"> <!-- Added container for potential horizontal scroll -->
+          <table id="products-table">
+            <thead>
+              <tr>
+                <th data-key="0">المنتج <span class="arrow"></span></th>
+                <th data-key="1">السعر <span class="arrow"></span></th>
+                <th data-key="2">الكمية المتوفرة <span class="arrow"></span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Product rows will be inserted here by JavaScript -->
+            </tbody>
+          </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      جميع الحقوق محفوظة &copy; 2024 - مكتبة الدحيح
+    </div>
+  </footer>
+
+  <script>
+    // --- Existing JavaScript --- 
+    const SPREADSHEET_ID = '1YbmJS4SAlTmDoiydxoTQ8Qkm_RmxL9BqwCzb-4GRrFg';
+    // IMPORTANT: Replace with your actual API Key if needed, or preferably use the Apps Script proxy method.
+    // Using API Key directly in frontend is NOT recommended for security.
+    // const API_KEY = 'YOUR_API_KEY'; 
+    // const RANGE = 'منتجات!A4:C'; // Adjusted range to fetch all products
+
+    // Using Apps Script URL is generally safer as it acts as a proxy
+    const APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxRx057_8M7mCYFH7acEp4-mK5vxh5XuKpZfq5gr3qmu0EKUTKgGV5BFUu9BrJOeggK2Q/exec';
+
+    let products = [];
+    const saleProduct = document.getElementById('saleProduct');
+    const saleQty     = document.getElementById('saleQty');
+    const totalDisplay= document.getElementById('totalDisplay');
+    const saleBtn     = document.getElementById('saleBtn');
+    const message     = document.getElementById('message');
+    const searchBox   = document.getElementById('searchBox');
+    const tbody       = document.querySelector('#products-table tbody');
+
+    // Function to display messages (success or error)
+    function showMessage(text, type = 'error') {
+        message.textContent = text;
+        message.className = type; // Add 'success' or 'error' class
+        // Automatically hide the message after 5 seconds
+        setTimeout(() => {
+            message.className = '';
+            message.textContent = '';
+        }, 5000);
+    }
+
+    // Fetch products using the Apps Script URL
+    async function fetchProducts() {
+      showMessage('جاري تحميل المنتجات...', 'info'); // Use a neutral style for loading
+      try {
+        // Use the Apps Script endpoint to get products
+        const res = await fetch(`${APP_SCRIPT_URL}?action=getProducts`);
+        const result = await res.json();
+
+        if (result.success && result.data) {
+          products = result.data; // Assuming Apps Script returns { success: true, data: [...] }
+          populateSaleOptions();
+          renderTable(products);
+          showMessage('تم تحميل المنتجات بنجاح.', 'success');
+        } else {
+          console.error('خطأ في جلب المنتجات من السكريبت:', result.error);
+          showMessage(`فشل في جلب المنتجات: ${result.error || 'خطأ غير معروف'}`, 'error');
+        }
+      } catch (e) {
+        console.error('خطأ في الاتصال لجلب المنتجات:', e);
+        showMessage('حدث خطأ أثناء الاتصال بالخادم لجلب المنتجات.', 'error');
+      }
+    }
+
+    function populateSaleOptions() {
+      saleProduct.innerHTML = '<option value="">اختر منتجًا</option>';
+      // Filter products with quantity > 0 for the sale dropdown
+      const availableProducts = products.filter(p => p.qty > 0);
+      availableProducts.forEach((p, i) => {
+        // Store the original index from the `products` array in the option's value
+        const originalIndex = products.findIndex(prod => prod.name === p.name);
+        saleProduct.innerHTML += `<option value="${originalIndex}">${p.name} (متاح: ${p.qty})</option>`;
+      });
+    }
+
+    function renderTable(list) {
+      tbody.innerHTML = '';
+      if (list.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding: 20px;">لا توجد منتجات لعرضها.</td></tr>';
+          return;
+      }
+      list.forEach(p => {
+        tbody.innerHTML += `<tr><td>${p.name}</td><td>${p.price.toFixed(2)} جنية</td><td>${p.qty}</td></tr>`; // Added currency symbol
+      });
+    }
+
+    function updateTotal() {
+      const idx = saleProduct.value;
+      const qty = parseInt(saleQty.value) || 0;
+      const price = (idx !== '' && products[idx]) ? products[idx].price : 0;
+      totalDisplay.textContent = `الإجمالي: ${(price * qty).toFixed(2)} جنية`; // Added currency symbol
+    }
+    saleProduct.addEventListener('change', updateTotal);
+    saleQty.addEventListener('input', updateTotal);
+
+    saleBtn.addEventListener('click', () => {
+      const idx = saleProduct.value;
+      const soldQty = parseInt(saleQty.value);
+
+      // Clear previous messages
+      message.className = '';
+      message.textContent = '';
+
+      if (idx === '' || !soldQty || soldQty <= 0) {
+        showMessage('الرجاء اختيار منتج وتحديد كمية صحيحة (أكبر من صفر).', 'error');
+        return;
+      }
+
+      const productIndex = parseInt(idx);
+      if (isNaN(productIndex) || productIndex < 0 || productIndex >= products.length) {
+          showMessage('المنتج المحدد غير صالح.', 'error');
+          return;
+      }
+
+      const p = products[productIndex];
+
+      if (soldQty > p.qty) {
+        showMessage(`الكمية المطلوبة (${soldQty}) أكبر من الكمية المتاحة (${p.qty}).`, 'error');
+        return;
+      }
+
+      const date = new Date().toLocaleString('ar-EG', { timeZone: 'Africa/Tripoli' }); // Example timezone
+      const total = (p.price * soldQty).toFixed(2);
+
+      // Construct URL for Apps Script (GET request)
+      const url = `${APP_SCRIPT_URL}?action=appendSale&date=${encodeURIComponent(date)}` +
+                  `&product=${encodeURIComponent(p.name)}` +
+                  `&total=${encodeURIComponent(total)}` +
+                  `&soldQty=${encodeURIComponent(soldQty)}`;
+
+      // Disable button during request
+      saleBtn.disabled = true;
+      saleBtn.textContent = 'جاري التسجيل...';
+      showMessage('جاري تسجيل عملية البيع...', 'info');
+
+      fetch(url) // Using GET as per original code and Apps Script
+        .then(response => response.json())
+        .then(res => {
+          if (res.success) {
+            // Update quantity locally *only after successful server confirmation*
+            p.qty -= soldQty;
+            renderTable(products); // Update the main products table
+            populateSaleOptions(); // Update the dropdown (removes product if qty becomes 0)
+            saleQty.value = ''; // Clear quantity input
+            updateTotal(); // Reset total display
+            showMessage('تم تسجيل عملية البيع بنجاح!', 'success');
+          } else {
+            // Log the specific error from Apps Script
+            console.error('فشل في تسجيل البيع (Server):', res.error);
+            showMessage(`فشل في تسجيل البيع: ${res.error || 'خطأ من الخادم.'}`, 'error');
+          }
+        })
+        .catch(error => {
+          console.error('خطأ في الاتصال بخدمة التسجيل:', error);
+          showMessage('خطأ في الاتصال بالخادم لتسجيل البيع. الرجاء المحاولة مرة أخرى.', 'error');
+        })
+        .finally(() => {
+            // Re-enable button
+            saleBtn.disabled = false;
+            saleBtn.textContent = 'تنفيذ البيع';
+        });
+    });
+
+    // Sorting Logic
+    document.querySelectorAll('#products-table th').forEach(th => th.addEventListener('click', () => {
+        const keyIndex = parseInt(th.dataset.key);
+        const key = ['name', 'price', 'qty'][keyIndex];
+        if (!key) return; // Exit if key is not found
+
+        const isAscending = th.classList.toggle('asc');
+
+        // Reset arrows on other headers
+        document.querySelectorAll('#products-table th .arrow').forEach(arrow => arrow.textContent = '');
+        // Set arrow on current header
+        th.querySelector('.arrow').textContent = isAscending ? '▲' : '▼';
+
+        // Sort the array
+        products.sort((a, b) => {
+            let valA = a[key];
+            let valB = b[key];
+
+            // Handle numeric vs string comparison
+            if (typeof valA === 'string') {
+                valA = valA.toLowerCase();
+                valB = valB.toLowerCase();
+            }
+
+            if (valA < valB) {
+                return isAscending ? -1 : 1;
+            }
+            if (valA > valB) {
+                return isAscending ? 1 : -1;
+            }
+            return 0; // a must be equal to b
+        });
+
+        renderTable(products);
+    }));
+
+    // Search/Filter Logic
+    searchBox.addEventListener('input', () => {
+      const searchTerm = searchBox.value.trim().toLowerCase();
+      const filteredProducts = products.filter(p => p.name.toLowerCase().includes(searchTerm));
+      renderTable(filteredProducts);
+    });
+
+    // Initial fetch of products when the page loads
+    fetchProducts();
+
+  </script>
+</body>
+</html>
